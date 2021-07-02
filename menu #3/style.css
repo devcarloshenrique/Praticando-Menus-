@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans:600&display=swap');
+
+:root {
+  --primary: #0A3140;
+  --secondary: #24546B;
+  --tertiary: #0A3140; 
+
+}
+
+body, ul {
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+#menu {
+  display: flex;
+  list-style: none;
+  gap: .5rem;
+}
+
+#menu a {
+  display: block;
+  padding: .5rem;
+  color: white;
+}
+
+#menu a:hover, #menu a.active{
+  border-bottom: solid 1px;
+}
+
+#logo {
+  display: block;
+  margin-left: 17px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  box-sizing: border-box;
+  background: var(--primary);
+  padding: 1rem;
+}
+
+#check-open, #check-close {
+  display: none;
+}
+
+#btn-open, #btn-close {
+  display: none;
+}
+
+@media (max-width: 1024px){
+
+  #menu {
+  display: block;
+  position: fixed;
+  width: 240px;
+  top: 70px;
+  left: -240px;
+  height: calc(100vh - 70px);
+  background: var(--secondary);
+  }
+
+  #check-close:checked ~ #menu {
+    -webkit-animation: slide-left .5s cubic-bezier(0,0,.58,1) both;
+    animation: slide-left .5s cubic-bezier(0,0,.58,1) both;
+  }
+      
+  #check-open:checked ~ #menu {
+    -webkit-animation: slide-right .5s cubic-bezier(.11,.35,.61,.87) both;
+    animation: slide-right .5s cubic-bezier(.11,.35,.61,.87) both;
+    
+  }
+
+  #btn-open, #btn-close {
+    position: relative;
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid #ffffff00;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    line-height: 45px;
+  }
+
+  #btn-open {
+    display: block;
+  }
+
+  #btn-open:hover, #btn-close:hover {
+    background: #8281810f;
+  }
+  
+  #check-open:checked ~ label #btn-open {
+    display: none;
+  }
+
+  #check-open:checked ~ label #btn-close {
+    display: block;
+  }
+
+  #check-close:checked ~ label #btn-open {
+    display: block;
+  }
+
+  #check-close:checked ~ label #btn-close {
+    display: none; 
+  }
+
+  #menu a {
+    display: flex;
+    align-items: center;  
+    box-sizing: border-box;
+    height: calc( (100vh - 70px) / 7);  
+    border-bottom: 1px solid var(--primary);
+    border-top: 1px solid rgba(255,255,255,.1);
+    border-left: 5px solid transparent;
+    font-family: 'Open Sans', sans-serif;
+    transition: all .5s ease;
+  }
+
+  #menu a:hover, #menu a.active {
+    background: rgba(0,0,0, .05);
+    border-left: 5px solid var(--tertiary);
+    color: var(--tertiary);
+  }
+
+  #menu a i {
+    font-size: 23px;
+  }
+
+  #menu a i, #menu a span  {
+    margin-left: 20px;
+  }
+
+  /**
+  * ----------------------------------------
+  * animation slide-right
+  * ----------------------------------------
+  */
+  
+  @-webkit-keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(-240px);
+              transform: translateX(-240px);
+    }
+    100% {
+      -webkit-transform: translateX(240px);
+              transform: translateX(240px);
+    }
+  }
+
+  @keyframes slide-right {
+    0% {
+      -webkit-transform: translateX(-240px);
+              transform: translateX(-240px);
+    }
+    100% {
+      -webkit-transform: translateX(240px);
+              transform: translateX(240px);
+    }
+  }
+
+  /**
+  * ----------------------------------------
+  * animation slide-left
+  * ----------------------------------------
+  */
+
+  @-webkit-keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(240px);
+              transform: translateX(240px);
+    }
+    100% {
+      -webkit-transform: translateX(-240px);
+              transform: translateX(-240px);
+    }
+  }
+
+  @keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(240px);
+              transform: translateX(240px);
+    }
+    100% {
+      -webkit-transform: translateX(-240px);
+              transform: translateX(-240px);
+    }
+  }
+
+}
